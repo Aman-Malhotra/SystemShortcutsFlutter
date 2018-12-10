@@ -21,6 +21,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class SystemShortcutsPlugin implements MethodCallHandler {
     private final MethodChannel channel;
     private Activity activity;
+
     /**
      * Plugin registration.
      */
@@ -28,10 +29,12 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "system_shortcuts");
         channel.setMethodCallHandler(new SystemShortcutsPlugin(registrar.activity(), channel));
     }
+
     private SystemShortcutsPlugin(Activity activity, MethodChannel channel) {
         this.activity = activity;
         this.channel = channel;
     }
+
     @Override
     public void onMethodCall(MethodCall call, Result result) {
         if (call.method.equals("getPlatformVersion")) {
@@ -40,7 +43,7 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
             home();
         } else if (call.method.equals("back")) {
             back();
-        }else if (call.method.equals("volDown")) {
+        } else if (call.method.equals("volDown")) {
             volDown();
         } else if (call.method.equals("volUp")) {
             volUp();
@@ -52,25 +55,31 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
             result.notImplemented();
         }
     }
-    void home(){
+
+    void home() {
         this.activity.startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
     }
+
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    void back(){
+    void back() {
         this.activity.onBackPressed();
     }
-    void volDown(){
+
+    void volDown() {
         AudioManager audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
     }
-    void volUp(){
+
+    void volUp() {
         AudioManager audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
     }
-    void orientLandscape(){
+
+    void orientLandscape() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
-    void orientPortrait(){
+
+    void orientPortrait() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 }
