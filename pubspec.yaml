@@ -1,8 +1,8 @@
 name: system_shortcuts
 description: A flutter plugin to use system shortcuts 
 version: 0.0.1
-author:
-homepage:
+author: Aman Malhotra<official.aman18@gmail.com>
+homepage: https://github.com/aman-malhotra-1999/SystemShortcutsFlutter
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

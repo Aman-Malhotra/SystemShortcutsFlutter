@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+Press home, back , volume up, volume Down buttons via flutter app and control your apps orientation(Portrait and Landscape).

@@ -1,6 +1,6 @@
 # system_shortcuts
 
-A flutter plugin to use system shortcuts 
+A flutter plugin to use system shortcuts.Press home, back , volume up, volume Down buttons via flutter app and control your apps orientation(Portrait and Landscape).
 
 ## Getting Started
 
