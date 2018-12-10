@@ -40,32 +40,46 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
-        if (call.method.equals("getPlatformVersion")) {
-            result.success("Android " + android.os.Build.VERSION.RELEASE);
-        } else if (call.method.equals("home")) {
-            home();
-        } else if (call.method.equals("back")) {
-            back();
-        } else if (call.method.equals("volDown")) {
-            volDown();
-        } else if (call.method.equals("volUp")) {
-            volUp();
-        } else if (call.method.equals("orientLandscape")) {
-            orientLandscape();
-        } else if (call.method.equals("orientPortrait")) {
-            orientPortrait();
-        } else if (call.method.equals("wifi")) {
-            wifi();
-        } else if (call.method.equals("checkWifi")) {
-            result.success(checkWifi());
-        } else if (call.method.equals("bluetooth")) {
-            bluetooth();
-        } else if (call.method.equals("checkBluetooth")) {
-            result.success(checkBluetooth());
-        }  else if (call.method.equals("checkAirplaneMode")) {
-            result.success(checkAirplaneMode());
-        } else {
-            result.notImplemented();
+        switch (call.method) {
+            case "getPlatformVersion":
+                result.success("Android " + Build.VERSION.RELEASE);
+                break;
+            case "home":
+                home();
+                break;
+            case "back":
+                back();
+                break;
+            case "volDown":
+                volDown();
+                break;
+            case "volUp":
+                volUp();
+                break;
+            case "orientLandscape":
+                orientLandscape();
+                break;
+            case "orientPortrait":
+                orientPortrait();
+                break;
+            case "wifi":
+                wifi();
+                break;
+            case "checkWifi":
+                result.success(checkWifi());
+                break;
+            case "bluetooth":
+                bluetooth();
+                break;
+            case "checkBluetooth":
+                result.success(checkBluetooth());
+                break;
+            case "checkAirplaneMode":
+                result.success(checkAirplaneMode());
+                break;
+            default:
+                result.notImplemented();
+                break;
         }
     }
 
