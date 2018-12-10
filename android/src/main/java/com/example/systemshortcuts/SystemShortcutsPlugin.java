@@ -2,12 +2,15 @@ package com.example.systemshortcuts;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
+import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.provider.Settings;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -51,6 +54,16 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
             orientLandscape();
         } else if (call.method.equals("orientPortrait")) {
             orientPortrait();
+        } else if (call.method.equals("wifi")) {
+            wifi();
+        } else if (call.method.equals("checkWifi")) {
+            result.success(checkWifi());
+        } else if (call.method.equals("bluetooth")) {
+            bluetooth();
+        } else if (call.method.equals("checkBluetooth")) {
+            result.success(checkBluetooth());
+        }  else if (call.method.equals("checkAirplaneMode")) {
+            result.success(checkAirplaneMode());
         } else {
             result.notImplemented();
         }
@@ -82,4 +95,46 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
     void orientPortrait() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
+
+    void wifi() {
+        WifiManager wifiManager = (WifiManager) this.activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if (wifiManager.isWifiEnabled()) {
+            wifiManager.setWifiEnabled(false);
+        } else {
+            wifiManager.setWifiEnabled(true);
+        }
+    }
+
+    boolean checkWifi() {
+        WifiManager wifiManager = (WifiManager) this.activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        return wifiManager.isWifiEnabled();
+    }
+
+    @TargetApi(Build.VERSION_CODES.ECLAIR)
+    void bluetooth() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter.isEnabled()) {
+            System.out.println(mBluetoothAdapter.isEnabled() + " 1");
+            mBluetoothAdapter.disable();
+        } else {
+            System.out.println(mBluetoothAdapter.isEnabled() + " 2");
+            mBluetoothAdapter.enable();
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.ECLAIR)
+    boolean checkBluetooth() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        return mBluetoothAdapter.isEnabled();
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    boolean checkAirplaneMode() {
+        // read the airplane mode setting
+        boolean isEnabled = Settings.Global.getInt(
+                this.activity.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
+        return isEnabled;
+    }
+
 }
