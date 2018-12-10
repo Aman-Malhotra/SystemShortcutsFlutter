@@ -56,32 +56,18 @@ A flutter plugin to use system shortcuts.No IOS Implementation yet . Pull Reques
 
 # Usage
 ```
-class _MyAppState extends State<MyApp> {
-  int maxVol, currentVol;
-
-  @override
-  void initState() {
-    super.initState();
-    // Make this call in initState() function in the root widgte of your app
-    initPlatformState();
-  }
-
-  Future<void> initPlatformState() async {
-    // pass any stream as parameter as per requirement
-    await Volume.controlVolume(AudioManager.STREAM_SYSTEM);
-  }
-
-  updateVolumes() async {
-    // get Max Volume
-    maxVol = await Volume.getMaxVol;
-    // get Current Volume
-    currentVol = await Volume.getVol;
-    setState(() {});
-  }
-
-  setVol(int i) async {
-    await Volume.setVol(i);
-  }
+FlatButton(
+  child: Text("Home"),
+  onPressed: () async {
+    await SystemShortcuts.home();
+  },
+),
+FlatButton(
+  child: Text("Check Wifi"),
+  onPressed: () async {
+    bool wifi = await SystemShortcuts.checkWifi;
+  },
+),
 ```
 ## Getting Started
 
