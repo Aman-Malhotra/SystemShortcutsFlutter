@@ -74,9 +74,6 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
             case "checkBluetooth":
                 result.success(checkBluetooth());
                 break;
-            case "checkAirplaneMode":
-                result.success(checkAirplaneMode());
-                break;
             default:
                 result.notImplemented();
                 break;
@@ -128,10 +125,8 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
     void bluetooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter.isEnabled()) {
-            System.out.println(mBluetoothAdapter.isEnabled() + " 1");
             mBluetoothAdapter.disable();
         } else {
-            System.out.println(mBluetoothAdapter.isEnabled() + " 2");
             mBluetoothAdapter.enable();
         }
     }
@@ -142,13 +137,5 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
         return mBluetoothAdapter.isEnabled();
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    boolean checkAirplaneMode() {
-        // read the airplane mode setting
-        boolean isEnabled = Settings.Global.getInt(
-                this.activity.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) == 1;
-        return isEnabled;
-    }
 
 }
