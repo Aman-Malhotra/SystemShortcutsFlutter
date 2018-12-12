@@ -137,5 +137,4 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
         return mBluetoothAdapter.isEnabled();
     }
 
-
 }

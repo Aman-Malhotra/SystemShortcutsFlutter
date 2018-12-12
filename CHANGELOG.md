@@ -1,3 +1,11 @@
+## 0.0.4
+
+Updated description
+
+## 0.0.3
+
+Example readme update
+
 ## 0.0.2
 
 Removed the deprecated airplane mode error
