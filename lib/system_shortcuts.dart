@@ -32,7 +32,7 @@ class SystemShortcuts {
     await _channel.invokeMethod('wifi');
   }
 
-  static Future<bool> checkWifi() async {
+  static Future<bool> get checkWifi async {
     bool b = await _channel.invokeMethod('checkWifi');
     return b;
   }
@@ -41,14 +41,9 @@ class SystemShortcuts {
     await _channel.invokeMethod('bluetooth');
   }
 
-  static Future<bool> checkBluetooth() async {
+  static Future<bool> get checkBluetooth async {
     bool b = await _channel.invokeMethod('checkBluetooth');
     return b;
   }
 
-
-  static Future<bool> checkAirplaneMode() async {
-    bool b = await _channel.invokeMethod('checkAirplaneMode');
-    return b;
-  }
 }

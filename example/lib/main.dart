@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             FlatButton(
               child: Text("Check Wifi"),
               onPressed: () async {
-                print(await SystemShortcuts.checkWifi());
+                print(await SystemShortcuts.checkWifi);
               },
             ),
             FlatButton(
@@ -82,13 +82,7 @@ class _MyAppState extends State<MyApp> {
             FlatButton(
               child: Text("Check Bluetooth"),
               onPressed: () async {
-                print(await SystemShortcuts.checkBluetooth());
-              },
-            ),
-            FlatButton(
-              child: Text("Check AirplaneMode"),
-              onPressed: () async {
-                print(await SystemShortcuts.checkAirplaneMode());
+                print(await SystemShortcuts.checkBluetooth);
               },
             ),
           ],
