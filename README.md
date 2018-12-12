@@ -50,10 +50,6 @@ A flutter plugin to use system shortcuts.No IOS Implementation yet . Pull Reques
 
 > await SystemShortcuts.checkBluetooth;// return true/false
 
-### Get current AIRPLANE MODE state
-
-> await SystemShortcuts.checkAirplaneMode;// return true/false
-
 # Usage
 ```
 FlatButton(
