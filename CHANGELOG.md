@@ -1,3 +1,11 @@
+## 0.0.6
+
+Added license.
+
+## 0.0.5
+
+Updated dart doc documentation in system_shortcuts.dart  file
+
 ## 0.0.4
 
 Updated description

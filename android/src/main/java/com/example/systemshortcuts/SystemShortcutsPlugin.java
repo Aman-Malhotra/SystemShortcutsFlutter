@@ -41,9 +41,6 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
     @Override
     public void onMethodCall(MethodCall call, Result result) {
         switch (call.method) {
-            case "getPlatformVersion":
-                result.success("Android " + Build.VERSION.RELEASE);
-                break;
             case "home":
                 home();
                 break;
