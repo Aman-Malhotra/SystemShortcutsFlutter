@@ -1,3 +1,8 @@
+
+## 0.0.7
+
+Added async library to system_shortcuts.dart file.
+
 ## 0.0.6
 
 Added license.
