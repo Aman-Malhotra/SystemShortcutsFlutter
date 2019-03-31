@@ -1,3 +1,7 @@
+## 0.2.0
+
+* iOS Support
+
 ## 0.1.0
 
 Version Upgrade
