@@ -1,7 +1,6 @@
 name: system_shortcuts
 description: Flutter plugin to use system shortcuts like pressing home, back, volume Up, volume Down keys and toggle wifi, and bluetooth as well. 
 version: 0.1.0
-author: Aman Malhotra<official.aman18@gmail.com>
 homepage: https://github.com/aman-malhotra-1999/SystemShortcutsFlutter
 
 environment:
