@@ -65,7 +65,6 @@ public class SystemShortcutsPlugin implements FlutterPlugin, ActivityAware, Meth
         activity = null;
     }
 
-
     /**
      * Plugin registration.
      */
@@ -115,34 +114,34 @@ public class SystemShortcutsPlugin implements FlutterPlugin, ActivityAware, Meth
         }
     }
 
-    void home() {
+    private void home() {
         this.activity.startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    void back() {
+    private void back() {
         this.activity.onBackPressed();
     }
 
-    void volDown() {
+    private void volDown() {
         AudioManager audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
     }
 
-    void volUp() {
+    private void volUp() {
         AudioManager audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
     }
 
-    void orientLandscape() {
+    private void orientLandscape() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
-    void orientPortrait() {
+    private void orientPortrait() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-    void wifi() {
+    private void wifi() {
         WifiManager wifiManager = (WifiManager) this.activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if (wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(false);
@@ -151,13 +150,13 @@ public class SystemShortcutsPlugin implements FlutterPlugin, ActivityAware, Meth
         }
     }
 
-    boolean checkWifi() {
+    private boolean checkWifi() {
         WifiManager wifiManager = (WifiManager) this.activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         return wifiManager.isWifiEnabled();
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    void bluetooth() {
+    private void bluetooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.disable();
@@ -167,7 +166,7 @@ public class SystemShortcutsPlugin implements FlutterPlugin, ActivityAware, Meth
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    boolean checkBluetooth() {
+    private boolean checkBluetooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         return mBluetoothAdapter.isEnabled();
     }
