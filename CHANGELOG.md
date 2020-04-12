@@ -1,10 +1,10 @@
 ## 0.2.1
 
-* iOS Support
+* Bug Fixes
 
 ## 0.2.0
 
-* iOS Support
+* iOS Support. Thanks to [Rody Davis](https://github.com/rodydavis) for IOS implementation.
 
 ## 0.1.1
 
