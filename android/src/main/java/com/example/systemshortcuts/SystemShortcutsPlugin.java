@@ -3,15 +3,19 @@ package com.example.systemshortcuts;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.Build;
-import android.provider.Settings;
 
+import androidx.annotation.NonNull;
+
+
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.activity.ActivityAware;
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -21,25 +25,58 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * SystemShortcutsPlugin
  */
-public class SystemShortcutsPlugin implements MethodCallHandler {
-    private final MethodChannel channel;
+public class SystemShortcutsPlugin implements FlutterPlugin, ActivityAware, MethodCallHandler {
+    private MethodChannel channel;
     private Activity activity;
+
+    /**
+     * v2 plugin embedding
+     */
+    @Override
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+        channel = new MethodChannel(
+                binding.getBinaryMessenger(), "system_shortcuts");
+        channel.setMethodCallHandler(this);
+    }
+
+    @Override
+    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+        channel.setMethodCallHandler(null);
+        channel = null;
+    }
+
+    @Override
+    public void onAttachedToActivity(ActivityPluginBinding binding) {
+        activity = binding.getActivity();
+    }
+
+    @Override
+    public void onDetachedFromActivity() {
+        activity = null;
+    }
+
+    @Override
+    public void onReattachedToActivityForConfigChanges(ActivityPluginBinding binding) {
+        activity = binding.getActivity();
+    }
+
+    @Override
+    public void onDetachedFromActivityForConfigChanges() {
+        activity = null;
+    }
 
     /**
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "system_shortcuts");
-        channel.setMethodCallHandler(new SystemShortcutsPlugin(registrar.activity(), channel));
-    }
-
-    private SystemShortcutsPlugin(Activity activity, MethodChannel channel) {
-        this.activity = activity;
-        this.channel = channel;
+        SystemShortcutsPlugin instance = new SystemShortcutsPlugin();
+        instance.channel = new MethodChannel(registrar.messenger(), "system_shortcuts");
+        instance.activity = registrar.activity();
+        instance.channel.setMethodCallHandler(instance);
     }
 
     @Override
-    public void onMethodCall(MethodCall call, Result result) {
+    public void onMethodCall(MethodCall call, @NonNull Result result) {
         switch (call.method) {
             case "home":
                 home();
@@ -77,34 +114,34 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
         }
     }
 
-    void home() {
+    private void home() {
         this.activity.startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    void back() {
+    private void back() {
         this.activity.onBackPressed();
     }
 
-    void volDown() {
+    private void volDown() {
         AudioManager audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
     }
 
-    void volUp() {
+    private void volUp() {
         AudioManager audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
     }
 
-    void orientLandscape() {
+    private void orientLandscape() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
-    void orientPortrait() {
+    private void orientPortrait() {
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-    void wifi() {
+    private void wifi() {
         WifiManager wifiManager = (WifiManager) this.activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if (wifiManager.isWifiEnabled()) {
             wifiManager.setWifiEnabled(false);
@@ -113,13 +150,13 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
         }
     }
 
-    boolean checkWifi() {
+    private boolean checkWifi() {
         WifiManager wifiManager = (WifiManager) this.activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         return wifiManager.isWifiEnabled();
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    void bluetooth() {
+    private void bluetooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.disable();
@@ -129,7 +166,7 @@ public class SystemShortcutsPlugin implements MethodCallHandler {
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    boolean checkBluetooth() {
+    private boolean checkBluetooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         return mBluetoothAdapter.isEnabled();
     }
