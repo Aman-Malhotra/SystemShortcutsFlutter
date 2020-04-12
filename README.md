@@ -69,3 +69,7 @@ FlatButton(
   },
 ),
 ```
+
+All Contibutors
+**[Rody Davis](https://github.com/rodydavis)** - IOS Implementation
+**[Thorben Markmann](https://github.com/tmarkmann)** - Plugin V2 embedding, Updation lib dependencies.

@@ -1,10 +1,11 @@
 ## 0.2.1
 
-* Bug Fixes
+* Bug Fixes and Updates
+Thanks to **[Thorben Markmann](https://github.com/tmarkmann)** for the Contibution.
 
 ## 0.2.0
 
-* iOS Support. Thanks to [Rody Davis](https://github.com/rodydavis) for IOS implementation.
+* iOS Support. Thanks to **[Rody Davis](https://github.com/rodydavis)** for IOS implementation.
 
 ## 0.1.1
 
