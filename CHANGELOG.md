@@ -1,3 +1,7 @@
+## 0.2.2
+
+* Readme Updates
+
 ## 0.2.1
 
 * Bug Fixes and Updates
