@@ -1,6 +1,6 @@
 # system_shortcuts
 
-A flutter plugin to use system shortcuts.No IOS Implementation yet . Pull Request for ios implementation are welcome.
+A flutter plugin to use system shortcuts.
 
 ### For using funtions and getters related to WIFI settings you need to add these two permissions in your AndroidManifext.xml file
 ```
@@ -65,13 +65,3 @@ FlatButton(
   },
 ),
 ```
-## Getting Started
-
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.io/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.

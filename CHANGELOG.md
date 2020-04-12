@@ -1,3 +1,7 @@
+## 0.2.0
+
+* iOS Support
+
 ## 0.1.1
 
 AndroidX issues resolved migrations done
