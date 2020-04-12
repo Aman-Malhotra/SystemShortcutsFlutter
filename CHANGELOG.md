@@ -1,3 +1,7 @@
+## 0.2.1
+
+* iOS Support
+
 ## 0.2.0
 
 * iOS Support

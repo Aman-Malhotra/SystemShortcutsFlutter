@@ -13,12 +13,15 @@ A flutter plugin to use system shortcuts.
 <uses-permission android:name="android.permission.BLUETOOTH"/>
 <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 ```
+### Make this import 
+
+> import 'package:system_shortcuts/SystemShortcutsFlutter.dart';
 
 # Functions 
 
 ### Press home button using this function.
 
-> await SystemShortcuts.home();// go to default laucher from any app 
+> await SystemShortcuts.home();// perform a home button tap in android
 
 ### Press back button using this function
 
