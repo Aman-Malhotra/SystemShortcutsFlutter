@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:system_shortcuts/SystemShortcutsFlutter.dart';
+import 'package:system_shortcuts/system_shortcuts.dart';
 
 void main() => runApp(Main());
 
