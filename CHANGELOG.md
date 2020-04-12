@@ -6,6 +6,10 @@
 
 * iOS Support
 
+## 0.1.1
+
+AndroidX issues resolved migrations done
+
 ## 0.1.0
 
 Version Upgrade
