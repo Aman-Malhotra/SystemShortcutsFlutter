@@ -1,3 +1,8 @@
+## 0.2.3
+
+* Bug Fixes 
+Thanks to **[Alex-Evo](https://github.com/Alex-Evo)** for the Contibution.
+
 ## 0.2.2
 
 * Readme Updates
