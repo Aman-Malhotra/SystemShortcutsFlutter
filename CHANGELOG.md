@@ -1,3 +1,6 @@
+## 1.0.0
+Updated pubspec to show supported on both android and ios
+
 ## 0.2.3
 
 * Bug Fixes 
