@@ -85,8 +85,8 @@ class SystemShortcuts {
   /// Return true if the wifi is alreay turned on.
   ///
   /// Return false if the wifi is turned off.
-  static Future<bool> get checkWifi async {
-    bool b = await _channel.invokeMethod('checkWifi');
+  static Future<bool?> get checkWifi async {
+    bool? b = await _channel.invokeMethod('checkWifi');
     return b;
   }
 
@@ -104,8 +104,8 @@ class SystemShortcuts {
   /// Return true if the bluetooth is alreay turned on.
   ///
   /// Return false if the bluetooth is turned off.
-  static Future<bool> get checkBluetooth async {
-    bool b = await _channel.invokeMethod('checkBluetooth');
+  static Future<bool?> get checkBluetooth async {
+    bool? b = await _channel.invokeMethod('checkBluetooth');
     return b;
   }
 }
