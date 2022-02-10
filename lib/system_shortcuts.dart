@@ -3,16 +3,16 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 /// You can use shortcuts like pressing home and back button programatically
-/// by calling home ( ) and back ( ) functions respectively.
+/// by calling home() and back() functions respectively.
 ///
-/// You can also control volume keys by calling volUp ( ) and volDown ( )
+/// You can also control volume keys by calling volUp() and volDown()
 /// to press volume Up button and volume Down button respectively.
 ///
 /// You can change the orientation of your app by calling functions
-/// orientLandscape ( ) or orientPortrait ( ) to turn the app into
+/// orientLandscape() or orientPortrait() to turn the app into
 /// landscape and portrait mode respectively.
 ///
-/// You can toggle wifi and bluetooth as well using wifi ( ) and bluetooth ( )
+/// You can toggle wifi and bluetooth as well using wifi() and bluetooth()
 /// functions respectively
 class SystemShortcuts {
   static const MethodChannel _channel = const MethodChannel('system_shortcuts');
