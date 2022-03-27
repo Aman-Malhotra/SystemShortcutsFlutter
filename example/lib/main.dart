@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
 
 class Body extends StatelessWidget {
   const Body({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -44,53 +44,53 @@ class Body extends StatelessWidget {
     return Center(
         child: ListView(
       children: <Widget>[
-        FlatButton(
+        TextButton(
           child: Text("Home"),
           onPressed: () async {
             await SystemShortcuts.home();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Back"),
           onPressed: () async {
             await SystemShortcuts.back();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("VolDown"),
           onPressed: () async {
             await SystemShortcuts.volDown();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("VolUp"),
           onPressed: () async {
             await SystemShortcuts.volUp();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Landscape"),
           onPressed: () async {
             await SystemShortcuts.orientLandscape();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Portrait"),
           onPressed: () async {
             await SystemShortcuts.orientPortrait();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Wifi"),
           onPressed: () async {
             await SystemShortcuts.wifi();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Check Wifi"),
           onPressed: () async {
-            bool b = await SystemShortcuts.checkWifi;
-            Scaffold.of(context).showSnackBar(
+            bool? b = await SystemShortcuts.checkWifi;
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text("Wifi Turned On Check - $b"),
                 duration: Duration(seconds: 2),
@@ -98,17 +98,17 @@ class Body extends StatelessWidget {
             );
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Bluetooth"),
           onPressed: () async {
             await SystemShortcuts.bluetooth();
           },
         ),
-        FlatButton(
+        TextButton(
           child: Text("Check Bluetooth"),
           onPressed: () async {
-            bool b = await SystemShortcuts.checkBluetooth;
-            Scaffold.of(context).showSnackBar(
+            bool? b = await SystemShortcuts.checkBluetooth;
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text("Bluetooth Turned On Check - $b"),
                 duration: Duration(seconds: 2),
