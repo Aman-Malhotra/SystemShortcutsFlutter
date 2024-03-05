@@ -1,62 +1,94 @@
 # system_shortcuts
 
-A flutter plugin to use system shortcuts.
+> A flutter plugin to use system shortcuts
 
 Thanks to **[Rody Davis](https://github.com/rodydavis)** for IOS implementation.
 
-### For using funtions and getters related to WIFI settings you need to add these two permissions in your AndroidManifext.xml file
-```
+### For using functions and getters related to WIFI settings 
+
+You need to add these two permissions in your `AndroidManifest.xml` file:
+
+```xml
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
 ```
 
-### For using funtions and getters related to BLUETOOTH settings you need to add these two permissions in your AndroidManifext.xml file
-```
+### For using functions and getters related to BLUETOOTH settings
+
+You need to add these two permissions in your `AndroidManifest.xml` file:
+
+```xml
 <uses-permission android:name="android.permission.BLUETOOTH"/>
 <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 ```
+
 ### Make this import 
 
-> import 'package:system_shortcuts/SystemShortcutsFlutter.dart';
+```dart
+import 'package:system_shortcuts/SystemShortcutsFlutter.dart';
+```
 
 # Functions 
 
 ### Press home button using this function.
 
-> await SystemShortcuts.home();// perform a home button tap in android
+```dart
+// Perform a home button tap in android
+await SystemShortcuts.home();
+```
 
 ### Press back button using this function
 
-> await SystemShortcuts.back();// perform a back button tap in android
+```dart
+// Perform a back button tap in android
+await SystemShortcuts.back();
+```
 
 ### Press volume Down in using this function
 
-> await SystemShortcuts.volDown();// perform a volume down button click
+```dart
+// Perform a volume down button click
+await SystemShortcuts.volDown();
+```
 
 ### Press volume Down in using this function
 
-> await SystemShortcuts.volUp();// perform a volume up button click
+```dart
+// Perform a volume up button click
+await SystemShortcuts.volUp();
+```
 
 ### Toggle WIFI using this function
 
-> await SystemShortcuts.wifi();// toggle wifi in android 
+```dart
+// Toggle wifi in android
+await SystemShortcuts.wifi();
+```
 
 ### Toggle BLUETOOTH using this function
 
-> await SystemShortcuts.bluetooth();// toggle bluetooth in android 
+```dart
+// Toggle bluetooth in android
+await SystemShortcuts.bluetooth();
+```
 
 # Getters
 
 ### Get current WIFI state
 
-> await SystemShortcuts.checkWifi;// return true/false
+```dart
+await SystemShortcuts.checkWifi; // bool
+```
 
 ### Get current BLUETOOTH state
 
-> await SystemShortcuts.checkBluetooth;// return true/false
+```dart
+await SystemShortcuts.checkBluetooth; // bool
+``````
 
 # Usage
-```
+
+```dart
 FlatButton(
   child: Text("Home"),
   onPressed: () async {
